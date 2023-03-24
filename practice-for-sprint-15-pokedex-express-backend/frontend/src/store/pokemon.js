@@ -45,8 +45,8 @@ export const getOnePokemon = (id) => async dispatch => {
   }
 }
 
-export const postPokemon = (pokemon) => {
-  return fetch(`/api/pokemon`, {
+export const createPokemon = (pokemon) => async (dispatch) => {
+  const res = await fetch(`/api/pokemon`, {
     method: "POST",
     body: JSON.stringify(pokemon),
     headers: {
@@ -54,6 +54,8 @@ export const postPokemon = (pokemon) => {
       'Accept': 'application/json'
     }
   })
+  const data = await res.json();
+  dispatch(addOnePokemon(data))
 }
 
 const initialState = {
