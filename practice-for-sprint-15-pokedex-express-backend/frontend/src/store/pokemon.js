@@ -45,6 +45,17 @@ export const getOnePokemon = (id) => async dispatch => {
   }
 }
 
+export const postPokemon = (pokemon) => {
+  return fetch(`/api/pokemon`, {
+    method: "POST",
+    body: JSON.stringify(pokemon),
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+}
+
 const initialState = {
   list: [],
   types: []
